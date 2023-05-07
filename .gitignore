@@ -37,3 +37,10 @@
 /src
 /mapfile
 /tools/python/__pycache__/
+/test
+ffmpeg-gpu/config.asm
+ffmpeg-gpu/config.h
+ffmpeg-gpu/ffmpeg
+ffmpeg-gpu/ffplay
+ffmpeg-gpu/ffprobe
+ffmpeg-gpu/libavfilter/cnpy

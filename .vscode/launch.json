@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++ Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [
+                "-hwaccel",
+                "cuda",
+                "-hwaccel_output_format",
+                "cuda",
+                "-i",
+                "/workspace/test.mp4",
+                "-vf",
+                "format_cuda=rgbpf32,tensorrt=/workspace/net_g_1000000_clip_g5_ploy.trt,format_cuda=nv12",
+                "-c:v",
+                "h264_nvenc",
+                "/workspace/test_trt_v2.mp4",
+                "-y"
+            ],
+            "stopAtEntry": false,
+            "externalConsole": false,
+            "cwd": "/FFmpeg-GPU-Demo/ffmpeg-gpu",
+            "program": "/FFmpeg-GPU-Demo/ffmpeg-gpu/ffmpeg_g",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
