@@ -1,17 +1,20 @@
 # reference: https://seisman.github.io/how-to-write-makefile/overview.html
 CC      = gcc
-CFLAGS  = -g -I.
+CFLAGS  = -g -fPIC -I.
 RM      = rm -f
 DEPS = foo.h
-OBJS = main.o foo.o
+OBJS = main.o foo.so
 
-default: main
+default: main.out
+
+main.out: $(OBJS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJS)
-	$(CC) -o $@ $^ $(CFLAGS)
+foo.so: foo.o
+	$(CC) -shared -o $@ $< $(CFLAGS)
 
 clean:
-	$(RM) main
+	$(RM) main.out

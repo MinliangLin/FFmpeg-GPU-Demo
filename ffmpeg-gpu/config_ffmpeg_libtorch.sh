@@ -7,6 +7,7 @@ TORCH_LIBPATH=$TORCH_ROOT/lib
 --extra-ldflags=-L/usr/local/cuda/lib64 --disable-static --enable-shared --enable-opengl \
 --enable-libtensorrt --enable-libopencv \
 --extra-ldflags=-L$TORCH_LIBPATH \
---extra-cflags="$TORCH_INCPATH" \
---nvccflags="-gencode arch=compute_75,code=sm_75 -lineinfo -Xcompiler -fPIC -I./ $TORCH_INCPATH" \
-# --disable-stripping
+--extra-cflags="-ggdb $TORCH_INCPATH" \
+--disable-optimizations \
+--nvccflags="-gencode arch=compute_86,code=sm_86 -lineinfo -Xcompiler -fPIC -I./ $TORCH_INCPATH" \
+--disable-stripping

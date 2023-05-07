@@ -5,6 +5,12 @@ AVPROGS-$(CONFIG_FFPROBE)  += ffprobe
 AVPROGS     := $(AVPROGS-yes:%=%$(PROGSSUF)$(EXESUF))
 PROGS       += $(AVPROGS)
 
+.PHONY : mydebug
+mydebug:
+	@echo mydebug
+	@echo $(AVPROGS-yes)
+	exit
+
 AVBASENAMES  = ffmpeg ffplay ffprobe
 ALLAVPROGS   = $(AVBASENAMES:%=%$(PROGSSUF)$(EXESUF))
 ALLAVPROGS_G = $(AVBASENAMES:%=%$(PROGSSUF)_g$(EXESUF))
